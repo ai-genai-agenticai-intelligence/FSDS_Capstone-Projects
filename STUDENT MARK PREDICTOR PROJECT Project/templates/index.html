@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Mark Predictor | ML Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="bg-grid"></div>
+
+    <div class="app-container">
+        <header>
+            <div class="model-badge">ML &middot; LINEAR REGRESSION</div>
+            <h1>Student Mark<br>Predictor</h1>
+            <p class="subtitle">
+                Predict exam scores from study hours &middot; 
+                <span class="formula-highlight">y = 3.93x + 50.44</span>
+            </p>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-icon">📐</span>
+                <span class="stat-value">3.93</span>
+                <span class="stat-label">SLOPE (M)</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📍</span>
+                <span class="stat-value">50.44</span>
+                <span class="stat-label">INTERCEPT (C)</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🎯</span>
+                <span class="stat-value">92%</span>
+                <span class="stat-label">R² SCORE</span>
+            </div>
+        </section>
+
+        <main class="main-card">
+            <div class="input-header">
+                <h2>Study Hours per Day</h2>
+                <div class="value-pill"><span id="hr-display">8.5</span> hrs</div>
+            </div>
+
+            <div class="slider-container">
+                <input type="range" id="hr-slider" min="0" max="12" step="0.1" value="8.5">
+                <div class="slider-labels">
+                    <span>0</span>
+                    <span>3</span>
+                    <span>6</span>
+                    <span>9</span>
+                    <span>12</span>
+                </div>
+            </div>
+
+            <div class="manual-entry">
+                <span>Or enter manually:</span>
+                <input type="number" id="manual-input" class="manual-input" value="8.5" step="0.1" min="0" max="12">
+            </div>
+
+            <button id="run-btn" class="predict-btn">Predict Score</button>
+
+            <div id="results-area" class="result-display hidden">
+                <span class="result-label">Estimated Achievement</span>
+                <div class="result-value"><span id="score-val">--</span><span>%</span></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
